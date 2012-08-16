@@ -1,0 +1,10 @@
+{
+	"name" : "express-controllers",
+	"version" : "0.1.0",
+	"dependencies" : {
+		
+	},
+	"scripts" : {
+		"test" : "nodeunit tests"
+	}
+}
