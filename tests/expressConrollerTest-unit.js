@@ -1,11 +1,11 @@
-var expressControllers = require('../lib/expressControllers')
+var expressControllers = require('../lib/expressController')
 
 module.exports = {
 
 	setDirectoryShouldReturnInstance : function(test) {
 		//Given that I have a controller named HomeController with an index-method,
 		//express-controllers should generate the path "/"
-		var controllersDir = __dirname + '/controllers';
+		var controllersDir = __dirname + '/mock';
 		var res = expressControllers
 			.setDirectory(controllersDir);
 		test.strictEqual(res, expressControllers);
@@ -39,6 +39,13 @@ module.exports = {
 		test.equal(res.method, 'get');
 		test.done();
 	},
+	
+	translatePeopleFind : function(test) {
+		var res = expressControllers.translatePath('get_find', 'people');
+		test.equal(res.path, '/people/find');
+		test.equal(res.method, 'get');
+		test.done();
+	},
 
 	translateFunctionBodyToParameterArray : function(test) {
 		var body = "function (req, res, parameter1, parameter2) {}";
@@ -47,7 +54,6 @@ module.exports = {
 		test.equal(res[1], 'parameter2');
 		test.done();
 	},
-
 	
 	translateParameter : function(test) {
 		var res = expressControllers.translatePath('get_index', 'people', ['id']);
@@ -56,20 +62,10 @@ module.exports = {
 		test.done();
 	},
 
-	bindingHomeIndex : function(test) {
-		var controllersDir = __dirname + '/controllers/bindingHomeIndex/';
-		expressControllers
-			.setDirectory(controllersDir);
-		test.expect(1);
-		var app = {
-			get : function(path, method) {
-				test.equal(path, '/');
-			}
-		};
-		
-		expressControllers.bind(app, function() {
-			test.done();
-
-		});
+	translateParameterInMethodName : function(test) {
+		var res = expressControllers.translatePath('get_id_friends', 'people', ['id']);
+		test.equal(res.path, '/people/:id/friends');
+		test.equal(res.method, 'get');
+		test.done();
 	}
 }

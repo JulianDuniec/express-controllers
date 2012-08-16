@@ -1,10 +1,20 @@
 {
-	"name" : "express-controllers",
-	"version" : "0.1.0",
-	"dependencies" : {
-		
-	},
-	"scripts" : {
-		"test" : "nodeunit tests"
-	}
+  "name": "express-controller",
+  "version": "0.1.0",
+  "dependencies": {},
+  "scripts": {
+    "test": "nodeunit tests"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "author": "Julian Duniec <julian.duniec@gmail.com> (http://duniec.se/cv/)",
+  "description": "Framework for controllers in express",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/JulianDuniec/express-controllers.git"
+  },
+  "main": "index.js"
 }
