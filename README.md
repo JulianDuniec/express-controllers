@@ -4,6 +4,11 @@ express-controllers
 This is the step needed to transform expressjs into a complete MVC framework, by adding Controller-support. No more hassling with code in your route. express-controllers automatically set up routing based on your controllers.
 
 
+### Contributors
+
+Julian Duniec http://github.com/julian-duniec  
+Charlie Rudenstål http://github.com/charlie-rudenstal
+
 ## Installation
 
     $ npm install express-controller
