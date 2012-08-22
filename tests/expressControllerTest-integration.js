@@ -64,5 +64,21 @@ module.exports = {
 		expressControllers.bind(app, function() {
 			test.done();
 		});
-	}
+	},
+
+	ignoreBindingWithoutRequestMethod: function(test) {
+		var controllersDir = __dirname + '/mock/ignoreBindingWithoutRequestMethod/';
+		expressControllers
+			.setDirectory(controllersDir);
+		test.expect(1); // There's 1  valid method out of 3 in mock
+		var app = {
+			get : function(path, method) {
+				test.equal(path, '/people');
+			}
+		};
+		
+		expressControllers.bind(app, function() {
+			test.done();
+		});
+	}  
 }

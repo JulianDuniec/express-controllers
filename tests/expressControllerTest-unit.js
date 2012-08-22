@@ -33,6 +33,12 @@ module.exports = {
 		test.done();
 	},
 
+	translateMethodWithoutRequest : function(test) {
+		var res = expressControllers.translatePath('index', 'home');
+		test.strictEqual(res, false);
+		test.done();
+	},
+
 	translatePeopleIndex : function(test) {
 		var res = expressControllers.translatePath('get_index', 'people');
 		test.equal(res.path, '/people');
