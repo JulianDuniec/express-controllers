@@ -69,7 +69,7 @@ module.exports = {
 		Will be translated to post("/people/:id/friends") (if parameter is included in function-name, it will be be included in the same position)
 	*/
 	get_id_friends : function(req, res, id) {
-		res.send("You are requesting the friends of the person with id: " + id);
+		res.send("You are requesting the friends of the person with id: " + id); 
 	}
 }
 
