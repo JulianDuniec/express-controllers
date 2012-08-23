@@ -7,7 +7,7 @@ This is the step needed to transform expressjs into a complete MVC framework, by
 
 ### Contributors
 
-Julian Duniec http://github.com/julian-duniec  
+Julian Duniec http://github.com/julianduniec  
 Charlie Rudenstål http://github.com/charlie-rudenstal
 
 ## Installation
