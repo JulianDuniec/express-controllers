@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/JulianDuniec/express-controllers.png)](http://travis-ci.org/JulianDuniec/express-controllers)
 express-controllers
 ===================
 
