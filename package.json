@@ -2,7 +2,7 @@
   "name": "express-controller",
   "version": "0.1.2",
   "dependencies": {
-  	"nodeunit"			: "*",
+  	"nodeunit"			: "*"
   },
   "scripts": {
     "test": "nodeunit tests"
