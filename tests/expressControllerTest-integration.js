@@ -80,5 +80,19 @@ module.exports = {
 		expressControllers.bind(app, function() {
 			test.done();
 		});
-	}  
+	},
+
+	ignoreInvalidFiles : function(test) {
+		var controllersDir = __dirname + '/mock/ignoreInvalidFiles/';
+		expressControllers
+			.setDirectory(controllersDir);
+		var app = {
+			get : function(path, method) {
+				test.equal(path, '/valid');
+			}
+		};
+		expressControllers.bind(app, function() {
+			test.done();
+		})
+	}
 }
