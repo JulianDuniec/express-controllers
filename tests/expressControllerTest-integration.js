@@ -94,5 +94,27 @@ module.exports = {
 		expressControllers.bind(app, function() {
 			test.done();
 		})
+	},
+
+	controllerAlias : function(test) {
+		var controllersDir = __dirname + '/mock/controllerAlias/';
+		expressControllers
+			.setDirectory(controllersDir);
+		test.expect(3); // There's 1  valid method out of 3 in mock
+		var urls = [];
+		var app = {
+			get : function(path, method) {
+				urls.push(path);
+				if(urls.length == 3) {
+					test.equal(urls[0], '/alias');
+					test.equal(urls[1], '/alias2');
+					test.equal(urls[2], '/test');
+				}
+			}
+		};
+		
+		expressControllers.bind(app, function() {
+			test.done();
+		});
 	}
 }
