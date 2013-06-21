@@ -25,7 +25,7 @@ var app = express();
 
 //Tell expressControllers to use the controllers-directory, and use bind() to set up routing.
 expressControllers
-			.setDirectory('/controllers')
+			.setDirectory( __dirname + '/controllers')
 			.bind(app);
 
 ```
