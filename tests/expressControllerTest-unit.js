@@ -60,6 +60,14 @@ module.exports = {
 		test.equal(res[1], 'parameter2');
 		test.done();
 	},
+
+	//Issure #4
+	translateFunctionBodyWithInnerParameters : function(test) {
+		var body = "function (req, res) { function (val1, val2, val3) {} }";
+		var res = expressControllers.translateFunctionBodyToParameterArray(body);
+		test.equal(res.length, 0);
+		test.done();
+	},
 	
 	translateParameter : function(test) {
 		var res = expressControllers.translatePath('get_index', 'people', ['id']);
