@@ -70,6 +70,12 @@ module.exports = {
 	get_id_friends : function(req, res, id) {
 		res.send("You are requesting the friends of the person with id: " + id); 
 	}
+	/*
+		Will be translated to get("/people/:userName/friend-requests") (non parameter parts that use camelCase will be separated by hyphens in the url)
+	*/
+	get_userName_friendRequests : function(req, res, userName) {
+		res.send("You are requesting the friend requests of the person with user name: " + userName);
+	}
 }
 
 ```
