@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "express": "^4.10.1",
+    "express-controller": "^0.1.5"
+  }
+}
