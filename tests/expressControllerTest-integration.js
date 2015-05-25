@@ -66,6 +66,23 @@ module.exports = {
 		});
 	},
 
+	middlewareFunctions: function(test) {
+		var controllersDir = __dirname + '/mock/middlewareFunctions/';
+                
+		expressControllers
+                        .setDirectory(controllersDir);
+                test.expect(1);
+                var app = {
+                        get : function(path, method) {
+                                test.equal(method.toString(), 'function (req, res, next){}');
+                        }
+                };
+
+                expressControllers.bind(app, function() {
+                        test.done();
+                });
+	},
+
 	ignoreBindingWithoutRequestMethod: function(test) {
 		var controllersDir = __dirname + '/mock/ignoreBindingWithoutRequestMethod/';
 		expressControllers
