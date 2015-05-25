@@ -54,7 +54,7 @@ module.exports = {
 	},
 
 	translateFunctionBodyToParameterArray : function(test) {
-		var body = "function (req, res, parameter1, parameter2) {}";
+		var body = function (req, res, parameter1, parameter2) {};
 		var res = expressControllers.translateFunctionBodyToParameterArray(body);
 		test.equal(res[0], 'parameter1');
 		test.equal(res[1], 'parameter2');
@@ -63,7 +63,7 @@ module.exports = {
 
 	//Issure #4
 	translateFunctionBodyWithInnerParameters : function(test) {
-		var body = "function (req, res) { function (val1, val2, val3) {} }";
+		var body = function (req, res) { function test(val1, val2, val3) {} };
 		var res = expressControllers.translateFunctionBodyToParameterArray(body);
 		test.equal(res.length, 0);
 		test.done();
