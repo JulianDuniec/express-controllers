@@ -57,7 +57,7 @@ module.exports = {
 		test.expect(1);
 		var app = {
 			get : function(path, method) {
-				test.equal(method.toString(), 'function (req, res) {f(req, res, req.params[params[0]]);}');
+				test.equal(method.toString(), 'function (req, res) {\n\t\t\t\tparams.unshift(req, res);\n\t\t\t\tf.apply(self, params);\n\t\t\t}');
 			}
 		};
 		
