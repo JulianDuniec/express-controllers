@@ -75,7 +75,17 @@ module.exports = {
     */
     get_userName_friendRequests : function(req, res, userName) {
         res.send("You are requesting the friend requests of the person with user name: " + userName);
-    }
+    },
+    /*
+        You may want to have your route passed through an express middleware (i.e. for authentication/authorization
+        checks etc.) before your controller function is called. To do that just pass an array of middleware functions
+        along with the controller function. You can use any number of middleware functions as you want. To know more
+        about express middleware callback functions in routes, visit this link: 
+        http://expressjs.com/guide/routing.html#route-handlers
+    */
+    get_id_friends : [my_auth_middleware.is_logged_in, function(req, res) {
+	res.send("You are requesting a authenticated page.");	
+    }]
 }
 
 ```
