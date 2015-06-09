@@ -57,13 +57,30 @@ module.exports = {
 		test.expect(1);
 		var app = {
 			get : function(path, method) {
-				test.equal(method.toString(), 'function (req, res) {f(req, res, req.params[params[0]]);}');
+				test.equal(method.toString(), 'function (req, res) {\n\t\t\t\t\tvar reqKey = req.method.toLowerCase()+req.route.path;\n\t\t\t\t\tvar clonedParams = self.pathParams[reqKey].slice(0);\n\t\t\t\t\tclonedParams = self.translateKeysArrayToValuesArray(clonedParams, req.params);\n\t\t\t\t\tclonedParams.unshift(req, res);\n\t\t\t\t\tself.pathFunctions[reqKey].apply(self, clonedParams);\n\t\t\t\t}');
 			}
 		};
 		
 		expressControllers.bind(app, function() {
 			test.done();
 		});
+	},
+
+	middlewareFunctions: function(test) {
+		var controllersDir = __dirname + '/mock/middlewareFunctions/';
+                
+		expressControllers
+                        .setDirectory(controllersDir);
+                test.expect(1);
+                var app = {
+                        get : function(path, method) {
+                                test.equal(method.toString(), 'function (req, res, next){}');
+                        }
+                };
+
+                expressControllers.bind(app, function() {
+                        test.done();
+                });
 	},
 
 	ignoreBindingWithoutRequestMethod: function(test) {
