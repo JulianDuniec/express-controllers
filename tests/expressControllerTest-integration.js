@@ -12,12 +12,12 @@ module.exports = {
 				test.equal(path, '/');
 			}
 		};
-		
+
 		expressControllers.bind(app, function() {
 			test.done();
 		});
 	},
-	
+
 	bindingPeopleFind : function(test) {
 		var controllersDir = __dirname + '/mock/bindingPeopleFind/';
 		expressControllers
@@ -28,12 +28,12 @@ module.exports = {
 				test.equal(path, '/people/find');
 			}
 		};
-		
+
 		expressControllers.bind(app, function() {
 			test.done();
 		});
 	},
-	
+
 	bindingPeopleFriends : function(test) {
 		var controllersDir = __dirname + '/mock/bindingPeopleFriends/';
 		expressControllers
@@ -44,7 +44,7 @@ module.exports = {
 				test.equal(path, '/people/:id/friends');
 			}
 		};
-		
+
 		expressControllers.bind(app, function() {
 			test.done();
 		});
@@ -60,7 +60,7 @@ module.exports = {
 				test.equal(method.toString(), 'function (req, res) {\n\t\t\t\t\tvar reqKey = req.method.toLowerCase()+req.route.path;\n\t\t\t\t\tvar clonedParams = self.pathParams[reqKey].slice(0);\n\t\t\t\t\tclonedParams = self.translateKeysArrayToValuesArray(clonedParams, req.params);\n\t\t\t\t\tclonedParams.unshift(req, res);\n\t\t\t\t\tself.pathFunctions[reqKey].apply(self, clonedParams);\n\t\t\t\t}');
 			}
 		};
-		
+
 		expressControllers.bind(app, function() {
 			test.done();
 		});
@@ -68,19 +68,19 @@ module.exports = {
 
 	middlewareFunctions: function(test) {
 		var controllersDir = __dirname + '/mock/middlewareFunctions/';
-                
-		expressControllers
-                        .setDirectory(controllersDir);
-                test.expect(1);
-                var app = {
-                        get : function(path, method) {
-                                test.equal(method.toString(), 'function (req, res, next){}');
-                        }
-                };
 
-                expressControllers.bind(app, function() {
-                        test.done();
-                });
+		expressControllers
+						.setDirectory(controllersDir);
+				test.expect(1);
+				var app = {
+						get : function(path, method) {
+								test.equal(method.toString(), 'function (req, res, next){}');
+						}
+				};
+
+				expressControllers.bind(app, function() {
+						test.done();
+				});
 	},
 
 	ignoreBindingWithoutRequestMethod: function(test) {
@@ -93,7 +93,7 @@ module.exports = {
 				test.equal(path, '/people');
 			}
 		};
-		
+
 		expressControllers.bind(app, function() {
 			test.done();
 		});
@@ -123,13 +123,13 @@ module.exports = {
 			get : function(path, method) {
 				urls.push(path);
 				if(urls.length == 3) {
-					test.equal(urls[0], '/alias');
+					test.equal(urls[2], '/alias');
 					test.equal(urls[1], '/alias2');
-					test.equal(urls[2], '/test');
+					test.equal(urls[0], '/test');
 				}
 			}
 		};
-		
+
 		expressControllers.bind(app, function() {
 			test.done();
 		});
