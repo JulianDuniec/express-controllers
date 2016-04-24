@@ -57,7 +57,7 @@ module.exports = {
 		test.expect(1);
 		var app = {
 			get : function(path, method) {
-				test.equal(method.toString(), 'function (req, res) {\n\t\t\t\t\tvar reqKey = req.method.toLowerCase()+req.route.path;\n\t\t\t\t\tvar clonedParams = self.pathParams[reqKey].slice(0);\n\t\t\t\t\tclonedParams = self.translateKeysArrayToValuesArray(clonedParams, req.params);\n\t\t\t\t\tclonedParams.unshift(req, res);\n\t\t\t\t\tself.pathFunctions[reqKey].apply(self, clonedParams);\n\t\t\t\t}');
+				test.equal(method.toString(), 'function (req, res) {\n\t\t\t\t\tvar reqKey = req.method.toLowerCase()+req.route.path;\n\t\t\t\t\tif(!self.pathParams[reqKey]) reqKey = \'get\'+req.route.path;\n\t\t\t\t\tvar clonedParams = self.pathParams[reqKey].slice(0);\n\t\t\t\t\tclonedParams = self.translateKeysArrayToValuesArray(clonedParams, req.params);\n\t\t\t\t\tclonedParams.unshift(req, res);\n\t\t\t\t\tself.pathFunctions[reqKey].apply(self, clonedParams);\n\t\t\t\t}');
 			}
 		};
 
