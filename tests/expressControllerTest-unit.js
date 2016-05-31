@@ -30,6 +30,10 @@ module.exports = {
 		test.equal(res.method, 'post');
 		var res = expressControllers.translatePath('get_index', 'home');
 		test.equal(res.method, 'get');
+		var res = expressControllers.translatePath('delete_index', 'home');
+		test.equal(res.method, 'delete');
+		var res = expressControllers.translatePath('patch_index', 'home');
+		test.equal(res.method, 'patch');
 		test.done();
 	},
 
