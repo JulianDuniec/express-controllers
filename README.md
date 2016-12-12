@@ -14,7 +14,7 @@ Julian Duniec http://github.com/julianduniec
     $ npm install express-controller
 
 ## Usage
-	
+
 
 ```js
 var expressControllers = require('express-controller');
@@ -118,3 +118,5 @@ module.exports = {
 }
 
 ```
+
+If you have controllers in nested directories then the directory name will automatically be appended in the route. So if you have a controller inside a nested directory like `controllers/api/v1/UserController.js` then the generated route will be `/api/v1/user`.
