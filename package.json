@@ -3,6 +3,7 @@
   "version": "0.3.0",
   "dependencies": {
     "file": "^0.2.2",
+    "get-parameter-names": "^0.3.0",
     "nodeunit": "*"
   },
   "scripts": {

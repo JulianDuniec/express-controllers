@@ -133,5 +133,27 @@ module.exports = {
 		expressControllers.bind(app, function() {
 			test.done();
 		});
-	}
+	},
+
+    es2015Support : function(test) {
+        var controllersDir = __dirname + '/mock/es2015Support/';
+        expressControllers
+            .setDirectory(controllersDir);
+        test.expect(3);
+        var urls = [];
+        var app = {
+            get : function(path, method) {
+                urls.push(path);
+                if(urls.length == 3) {
+                    test.equal(urls[2], '/es2015/a');
+                    test.equal(urls[1], '/es2015/b');
+                    test.equal(urls[0], '/es2015/c');
+                }
+            }
+        };
+
+        expressControllers.bind(app, function() {
+            test.done();
+        });
+    },
 }
