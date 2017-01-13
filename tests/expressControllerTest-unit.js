@@ -71,8 +71,40 @@ module.exports = {
 		test.equal(res[1], 'parameter2');
 		test.done();
 	},
+	translateFunctionBodyToParameterArrayDefaultsSupport : function(test) {
+        var body = function(){};
+        body.toString = function() {
+            return 'function (req, res, parameter1, parameter2 = 23) {}';
+        };
+		var res = expressControllers.translateFunctionBodyToParameterArray(body);
+		test.equal(res[0], 'parameter1');
+		test.equal(res[1], 'parameter2');
+		test.done();
+	},
 
-	//Issure #4
+	translateFunctionBodyToParameterArrayArrowSupport : function(test) {
+		var body = function(){};
+		body.toString = function() {
+			return '(req, res, parameter1, parameter2) => {}';
+		};
+		var res = expressControllers.translateFunctionBodyToParameterArray(body);
+		test.equal(res[0], 'parameter1');
+		test.equal(res[1], 'parameter2');
+		test.done();
+	},
+
+	translateFunctionBodyToParameterArrayArrowDefaultsSupport : function(test) {
+		var body = function(){};
+		body.toString = function() {
+			return '(req, res, parameter1, parameter2 = 23) => {}';
+		};
+		var res = expressControllers.translateFunctionBodyToParameterArray(body);
+		test.equal(res[0], 'parameter1');
+		test.equal(res[1], 'parameter2');
+		test.done();
+	},
+
+	//Issue #4
 	translateFunctionBodyWithInnerParameters : function(test) {
 		var body = function (req, res) { function test(val1, val2, val3) {} };
 		var res = expressControllers.translateFunctionBodyToParameterArray(body);
