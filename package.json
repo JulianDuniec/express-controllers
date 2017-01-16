@@ -1,6 +1,6 @@
 {
   "name": "express-controller",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "dependencies": {
     "file": "^0.2.2",
     "get-parameter-names": "^0.3.0",
